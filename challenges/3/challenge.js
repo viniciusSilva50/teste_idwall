@@ -17,10 +17,10 @@
  * a > b sempre.
  */
 
-const MDC = (a, b) => {    
-    if(!b) return a
-    const mod = (a % b)        
-    return MDC(b, mod)
+const MDC = (a, b) => {
+  if (!b) return a
+  const mod = (a % b)
+  return MDC(b, mod)
 }
 
 module.exports = MDC

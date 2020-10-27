@@ -27,16 +27,15 @@
  */
 
 const extractSize = htmlTemplate => {
-    const reg = /(height|width)(\: |\:)([0-9]+)/g
-    const result = { height:0, width:0 }
-    
+  const reg = /(height|width)(\: |\:)([0-9]+)/g
+  const result = { height:0, width:0 }
 
-    while ((results = reg.exec(htmlTemplate)) !== null) {
-        const [fullMatch] = results        
-        const [prop, number] = fullMatch.split(':')
-        if (!result[prop]) result[prop] = +number
-    }
-    return result
+  while ((results = reg.exec(htmlTemplate)) !== null) {
+    const [fullMatch] = results
+    const [prop, number] = fullMatch.split(':')
+    if (!result[prop]) result[prop] = +number
+  }
+  return result
 }
 
 module.exports = extractSize

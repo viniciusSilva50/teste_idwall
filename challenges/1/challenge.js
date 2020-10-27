@@ -10,7 +10,7 @@
  */
 
 const sumArguments = (...arr) => {
-    return arr.reduce((final , item) => final + item )    
+  return arr.reduce((final, item) => final + item)
 }
 
 module.exports = sumArguments

@@ -33,15 +33,15 @@ const { setData, setError, setLoading } = require('../../utils/stateHandlers')
 const api = require('../../utils/api') // Promise
 
 const doRequest = async () => {
-    await Promise.allSettled([
-        setLoading(true),
-        setError(false)
-    ])
-    
-    await api()
-        .then(result => setData(result))
-        .catch(err => setError(err))
-        .finally(() => setLoading(false))
+  await Promise.allSettled([
+    setLoading(true),
+    setError(false)
+  ])
+
+  await api()
+    .then(result => setData(result))
+    .catch(err => setError(err))
+    .finally(() => setLoading(false))
 }
 
 module.exports = doRequest

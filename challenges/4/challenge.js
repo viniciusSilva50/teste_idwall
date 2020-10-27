@@ -53,32 +53,32 @@
  */
 
 const normalizeData = unormalized => {
-    let { id, user, reports } = unormalized
-    const results = {}, users = {}     
-    const listOfReports = reports.map(item => item.id)
+  let { id, user, reports } = unormalized
+  const results = {}; const users = {}
+  const listOfReports = reports.map(item => item.id)
 
-    results[id] = {
-        id,
-        user: user.id,
-        reports: listOfReports
+  results[id] = {
+    id,
+    user: user.id,
+    reports: listOfReports
+  }
+
+  users[user.id] = user
+
+  reports = reports.reduce((final, { id, result}) => {
+    final[id] = {
+      id,
+      user: user.id,
+      ...result
     }
+    return final
+  }, {})
 
-    users[user.id] = user
-
-    reports = reports.reduce((final, { id, result}) => {
-        final[id] = {
-            id,
-            user: user.id,
-            ...result
-        }
-        return final
-    }, {})
-
-    return {
-        results,
-        users,
-        reports
-    }
+  return {
+    results,
+    users,
+    reports
+  }
 }
 
 module.exports = normalizeData
